@@ -24,4 +24,11 @@ Vagrant.configure('2') do |config|
     override.ssh.username = config.user.aws.username
     override.ssh.private_key_path = config.user.aws.private_key_path
   end
+
+  config.vm.provision 'ansible_local' do |a|
+    a.sudo = true
+    a.playbook = 'vagrant.yml'
+    a.galaxy_role_file = 'requirements.yml'
+    a.verbose = 'vv'
+  end
 end
