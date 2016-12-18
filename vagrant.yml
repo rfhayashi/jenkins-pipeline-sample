@@ -12,6 +12,8 @@
     - name: restart docker
       service: name=docker state=restarted
   tasks:
+    - name: installs git
+      yum: name=git
     - name: installs docker engine
       yum: name=docker update_cache=yes
       notify:
