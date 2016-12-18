@@ -2,5 +2,6 @@
   vars:
     jenkins_plugins:
       - workflow-aggregator
+      - github-organization-folder
   roles:
     - geerlingguy.jenkins
