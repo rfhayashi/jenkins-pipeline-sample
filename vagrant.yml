@@ -1,9 +1,13 @@
 - hosts: all
   vars:
     jenkins_plugins:
+      - credentials-binding
       - workflow-aggregator
       - github-organization-folder
       - docker-workflow
+      - analysis-core
+      - pmd
+      - checkstyle
     docker_users:
       - ec2-user
       - jenkins
