@@ -21,3 +21,11 @@
     - name: add users to docker group
       user: name={{ item }} groups=docker append=yes
       with_items: '{{ docker_users }}'
+    - name: downloads get-pip.py
+      get_url:
+        url: https://bootstrap.pypa.io/get-pip.py
+        dest: /tmp/get-pip.py
+    - name: installs pip
+      command: python /tmp/get-pip.py creates=/usr/local/bin/pip2
+    - name: installs ansible-container
+      pip: name=ansible-container executable=/usr/local/bin/pip2
