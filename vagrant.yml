@@ -3,6 +3,7 @@
     jenkins_plugins:
       - workflow-aggregator
       - github-organization-folder
+      - docker-workflow
     docker_users:
       - ec2-user
       - jenkins
