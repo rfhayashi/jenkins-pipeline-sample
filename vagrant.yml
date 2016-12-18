@@ -14,6 +14,8 @@
   tasks:
     - name: installs git
       yum: name=git
+    - name: installs rake
+      yum: name=rake
     - name: installs docker engine
       yum: name=docker update_cache=yes
       notify:
@@ -29,3 +31,5 @@
       command: python /tmp/get-pip.py creates=/usr/local/bin/pip2
     - name: installs ansible-container
       pip: name=ansible-container executable=/usr/local/bin/pip2
+    - name: creates link for ansible-container
+      file: src=/usr/local/bin/ansible-container dest=/usr/bin/ansible-container state=link
