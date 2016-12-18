@@ -28,6 +28,8 @@
     - name: add users to docker group
       user: name={{ item }} groups=docker append=yes
       with_items: '{{ docker_users }}'
+      notify:
+        - restart docker
     - name: downloads get-pip.py
       get_url:
         url: https://bootstrap.pypa.io/get-pip.py
