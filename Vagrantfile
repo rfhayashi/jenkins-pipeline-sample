@@ -1,4 +1,6 @@
 Vagrant.configure('2') do |config|
+  config.vm.provider :aws
+
   config.vm.box = 'dummy'
   config.vm.box_url = 'https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box'
 
@@ -31,4 +33,8 @@ Vagrant.configure('2') do |config|
     a.galaxy_role_file = 'requirements.yml'
     a.verbose = 'vv'
   end
+
+  # makes vagrant give priority to aws provider
+  # see: https://www.vagrantup.com/docs/providers/basic_usage.html
+  config.vm.provider :virtualbox
 end
