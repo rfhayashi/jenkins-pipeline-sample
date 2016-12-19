@@ -23,6 +23,10 @@ Vagrant.configure('2') do |config|
 
     aws.ami = config.user.aws.ami
 
+    aws.tags = {
+        'Name' => 'Jenkins-Pipeline-Sample'
+    }
+
     override.ssh.username = config.user.aws.username
     override.ssh.private_key_path = config.user.aws.private_key_path
   end
