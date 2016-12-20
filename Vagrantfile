@@ -9,7 +9,8 @@ Vagrant.configure('2') do |config|
           'ami' => 'ami-b73b63a0',
           'username' => 'ec2-user',
           'private_key_path' => '~/.ssh/id_rsa',
-          'instance_type' => 't2.medium'
+          'instance_type' => 't2.medium',
+          'elastic_ip' => nil
       }
   }
 
@@ -20,6 +21,7 @@ Vagrant.configure('2') do |config|
     aws.instance_type = config.user.aws.instance_type
     aws.subnet_id = config.user.aws.subnet_id
     aws.security_groups = config.user.aws.security_groups
+    aws.elastic_ip = config.user.aws.elastic_ip
 
     aws.ami = config.user.aws.ami
 
@@ -36,6 +38,9 @@ Vagrant.configure('2') do |config|
     a.playbook = 'vagrant.yml'
     a.galaxy_role_file = 'requirements.yml'
     a.verbose = 'vv'
+    a.extra_vars = {
+        'jenkins_admin_password' => config.user.jenkins.admin_password
+    }
   end
 
   # makes vagrant give priority to aws provider
