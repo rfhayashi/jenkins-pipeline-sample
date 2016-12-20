@@ -4,6 +4,7 @@
       - credentials-binding
       - workflow-aggregator
       - docker-workflow
+      - github
       - analysis-core
       - pmd
       - checkstyle
